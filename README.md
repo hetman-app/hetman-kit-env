@@ -1,6 +1,4 @@
-# Hetman Kit Environment
-
-<img src="https://hetman.app/svg/logo/full-transparent.svg" alt="Hetman Logo" width="200" height="38" />
+<img src="https://raw.githubusercontent.com/hetman-app/hetman-pipeline/main/docs/assets/full-white-text.webp" alt="Hetman Logo" width="200" height="38" />
 
 **Hetman Kit Environment** is a developer-centric environment variable manager. It leverages the **Hetman Pipeline** engine to treat environment variables not just as strings, but as strictly validated and transformed data structures.
 
