@@ -156,9 +156,33 @@ class EnvironmentVariable(Generic[T]):
 
     @property
     def get(self) -> T:
-        """Returns the loaded and processed environment variable.
+        """
+        Returns the loaded and processed environment variable.
 
         Returns:
             T: The stored variable value.
         """
         return self.variable
+
+    def __str__(self) -> str:
+        """Returns the string representation of the processed variable."""
+        return str(self.get)
+
+    def __repr__(self) -> str:
+        """Returns a technical representation of the EnvironmentVariable instance."""
+        return f"EnvironmentVariable(name={self.name})"
+
+    def __bool__(self) -> bool:
+        """Allows using the instance in boolean checks (e.g., if env_var:)."""
+        return bool(self.get)
+
+    def __eq__(self, other: Any) -> bool:
+        """Enables equality comparison between the variable value and other objects."""
+        if isinstance(other, EnvironmentVariable):
+            return self.get == other.get
+
+        return self.get == other
+
+    def __call__(self) -> T:
+        """Allows the instance to be called as a function to retrieve its value."""
+        return self.get

@@ -44,8 +44,39 @@ SECRET_KEY = EnvironmentVariable[str](
 
 # Access the processed value
 print(SECRET_KEY.get)
-
 ```
+
+## Pythonic Access Patterns
+
+You don't have to manually call `.get` every time. The `EnvironmentVariable` instance implements magic methods to make your code cleaner:
+
+-   **Direct Comparison**: Use `==` to compare the variable directly with a value.
+
+    ```python
+    if SECRET_KEY == "expected_hash_value":
+        ...
+    ```
+
+-   **Boolean Logic**: Use it directly in `if` statements to check if the value is truthy.
+
+    ```python
+    DEBUG_MODE = EnvironmentVariable[bool](name="DEBUG", optional=True)
+
+    if DEBUG_MODE:
+        print("Debug is enabled")
+    ```
+
+-   **String Conversion**: Use it directly in f-strings or `print()`.
+
+    ```python
+    print(f"API_URL: {API_URL}")
+    ```
+
+-   **Callable shorthand**: Call the object like a function to get the value.
+
+    ```python
+    current_key = SECRET_KEY()
+    ```
 
 ## Core Features
 
@@ -53,8 +84,6 @@ print(SECRET_KEY.get)
 -   **JSON Ready**: Built-in `json.loads` support for complex environment configurations.
 -   **Pipeline Integration**: Full access to the Pipeline execution flow (Type Check -> Setup -> Conditions -> Matches -> Transformations).
 -   **Singleton .env Loading**: The `.env` file is loaded once and shared across all instances.
-
----
 
 ## Documentation
 
