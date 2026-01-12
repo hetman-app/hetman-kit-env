@@ -44,6 +44,9 @@ SECRET_KEY = EnvironmentVariable[str](
 
 # Access the processed value
 print(SECRET_KEY.get)
+
+# You can call to get the raw value (Clean variable)
+API_PORT: int = EnvironmentVariable[int](name="API_PORT", type=int)()
 ```
 
 ## Pythonic Access Patterns
