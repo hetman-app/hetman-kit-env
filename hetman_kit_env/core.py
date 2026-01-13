@@ -25,8 +25,9 @@ class EnvironmentVariable(Generic[T]):
     It supports optional `.env` file loading and automatic JSON parsing.
 
     Attributes:
-        dotenv_path (str | None): Path to the .env file. If set, the file 
-            is loaded during the first initialization of any class instance.
+        dotenv_path (str | None): Path to the .env file. If None, the 
+            python-dotenv library automatically searches for a .env file.
+            The file is loaded during the first initialization of any class instance.
 
     Note:
         The class uses a `_dotenv_loaded` flag to ensure that the `.env` file 
@@ -147,10 +148,8 @@ class EnvironmentVariable(Generic[T]):
         Execution logic ensures the file is loaded only once per class lifecycle 
         if `dotenv_path` is defined.
         """
-        dotenv_path: str | None = self.__class__.dotenv_path
-
-        if not self.__class__._dotenv_loaded and dotenv_path:
-            load_dotenv(dotenv_path=dotenv_path)
+        if not self.__class__._dotenv_loaded:
+            load_dotenv(dotenv_path=self.__class__.dotenv_path)
 
             self.__class__._dotenv_loaded = True
 

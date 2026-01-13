@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hetman-kit-env"
-version = "0.2.0"
+version = "0.2.1"
 description = "Hetman Kit Environment is a developer-centric environment variable manager. It leverages the Hetman Pipeline engine to treat environment variables not just as strings, but as strictly validated and transformed data structures."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.12"
