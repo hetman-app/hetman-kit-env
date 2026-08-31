@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "krywok-kit-env"
-version = "0.1.0"
+version = "0.1.1"
 description = "Krywok Kit Environment is a developer-centric environment variable manager. It leverages the Krywok Pipeline engine to treat environment variables not just as strings, but as strictly validated and transformed data structures."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.12"
@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
-dependencies = ["krywok-pipeline>=1.0.0", "python-dotenv"]
+dependencies = ["krywok-pipeline>=2.0.0", "python-dotenv"]
 
 [project.urls]
 Homepage = "https://github.com/krywok/krywok-kit-env"

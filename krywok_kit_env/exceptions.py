@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from pipeline.core.pipe.resources.constants import PipeResult
+    from pipeline.pipe.resources.constants import PipeResult
 
     from .core import EnvironmentVariable
 

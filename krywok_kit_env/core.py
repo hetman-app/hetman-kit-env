@@ -10,8 +10,8 @@ from pipeline import Pipe
 from .exceptions import InvalidEnvironmentVariable, MissingEnvironmentVariable
 
 if TYPE_CHECKING:
-    from pipeline.core.pipe.resources.constants import PipeResult
-    from pipeline.core.pipeline.resources.types import PipelinePipeConfig
+    from pipeline.pipe.resources.constants import PipeResult
+    from pipeline.pipe.resources.types import PipeConfig
 
 T = TypeVar("T")
 
@@ -41,7 +41,7 @@ class EnvironmentVariable(Generic[T]):
         self,
         name: str,
         parse_as_json: bool = True,
-        **pipe_config: Unpack[PipelinePipeConfig]
+        **pipe_config: Unpack[PipeConfig]
     ) -> None:
         """
         Initializes the EnvironmentVariable instance and loads the value.
@@ -56,7 +56,7 @@ class EnvironmentVariable(Generic[T]):
         self.name: str = name
         self.parse_as_json: bool = parse_as_json
 
-        self.pipe_config: PipelinePipeConfig = pipe_config
+        self.pipe_config: PipeConfig = pipe_config
 
         self._load_dotenv()
 
@@ -75,7 +75,7 @@ class EnvironmentVariable(Generic[T]):
         value: Any = self._load_raw_variable()
 
         if value is None:
-            return value
+            return value  # type: ignore
 
         if self.parse_as_json:
             value = self._try_parse_as_json(value=value)
